@@ -10,7 +10,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/どら焼き.jpg",
+    "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -27,7 +27,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -36,7 +36,7 @@
   {
     "id": "s003",
     "shopId": "shop01",
-    "sweetName": "どら焼き",
+    "sweetName": "カスタードどら焼き",
     "shopName": "スイーツ店1",
     "category": "和菓子",
     "price": 481,
@@ -44,7 +44,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/どら焼きカスタード.jpg",
+    "image_url": "http://localhost:3000/images/sweets/どら焼きカスタード.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -61,7 +61,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -78,7 +78,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -95,7 +95,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -112,7 +112,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チョコレートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコレートケーキ.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -129,7 +129,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -146,7 +146,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -163,7 +163,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.06,
       "lng": 141.34
@@ -180,7 +180,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -197,7 +197,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -214,7 +214,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -231,7 +231,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/どら焼き.jpg",
+    "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -248,7 +248,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -265,7 +265,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/いちご大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/いちご大福.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -282,7 +282,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -299,7 +299,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -316,7 +316,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -333,7 +333,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.07,
       "lng": 141.35
@@ -350,7 +350,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -367,7 +367,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -384,7 +384,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -401,7 +401,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -418,7 +418,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -435,7 +435,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -452,7 +452,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -469,7 +469,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チョコクッキーシュー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコクッキーシュー.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -486,7 +486,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -503,7 +503,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/抹茶アイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/抹茶アイス.jpg",
     "coordinates": {
       "lat": 43.080000000000005,
       "lng": 141.36
@@ -520,7 +520,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -537,7 +537,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -554,7 +554,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -571,7 +571,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -588,7 +588,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/抹茶アイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/抹茶アイス.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -605,7 +605,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/どら焼き.jpg",
+    "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -622,7 +622,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -639,7 +639,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -656,7 +656,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -673,7 +673,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/バニラアイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/バニラアイス.jpg",
     "coordinates": {
       "lat": 43.09,
       "lng": 141.37
@@ -690,7 +690,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -707,7 +707,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/チョコレートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコレートケーキ.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -724,7 +724,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -741,7 +741,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -758,7 +758,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -775,7 +775,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/どら焼き.jpg",
+    "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -792,7 +792,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/バニラアイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/バニラアイス.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -809,7 +809,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -826,7 +826,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -843,7 +843,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.1,
       "lng": 141.38
@@ -860,7 +860,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -877,7 +877,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/いちご大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/いちご大福.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -894,7 +894,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -911,7 +911,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/アップルパイ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/アップルパイ.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -928,7 +928,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -945,7 +945,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -962,7 +962,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チョコレートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコレートケーキ.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -979,7 +979,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -996,7 +996,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -1013,7 +1013,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/バニラアイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/バニラアイス.jpg",
     "coordinates": {
       "lat": 43.11,
       "lng": 141.39000000000001
@@ -1030,7 +1030,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1047,7 +1047,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1064,7 +1064,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1081,7 +1081,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/バニラアイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/バニラアイス.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1098,7 +1098,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1115,7 +1115,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1132,7 +1132,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ティラミス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ティラミス.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1149,7 +1149,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1166,7 +1166,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/チョコレートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコレートケーキ.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1183,7 +1183,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/アップルパイ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/アップルパイ.jpg",
     "coordinates": {
       "lat": 43.120000000000005,
       "lng": 141.4
@@ -1200,7 +1200,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1217,7 +1217,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1234,7 +1234,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1251,7 +1251,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チョコクッキーシュー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコクッキーシュー.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1268,7 +1268,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1285,7 +1285,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/アップルパイ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/アップルパイ.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1302,7 +1302,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/抹茶アイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/抹茶アイス.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1319,7 +1319,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/バニラアイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/バニラアイス.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1336,7 +1336,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/プリン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/プリン.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1353,7 +1353,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.13,
       "lng": 141.41
@@ -1370,7 +1370,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/どら焼き.jpg",
+    "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1387,7 +1387,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1404,7 +1404,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/アップルパイ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/アップルパイ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1421,7 +1421,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1438,7 +1438,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/モンブラン.jpg",
+    "image_url": "http://localhost:3000/images/sweets/モンブラン.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1455,7 +1455,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1472,7 +1472,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1489,7 +1489,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/チョコレートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チョコレートケーキ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1506,7 +1506,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/ロールケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ロールケーキ.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1523,7 +1523,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.14,
       "lng": 141.42000000000002
@@ -1540,7 +1540,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/アップルパイ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/アップルパイ.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1557,7 +1557,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1574,7 +1574,7 @@
     "tags": [
       "期間限定"
     ],
-    "imageUrl": "/images/sweets/クッキー.jpg",
+    "image_url": "http://localhost:3000/images/sweets/クッキー.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1591,7 +1591,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/チーズケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/チーズケーキ.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1608,7 +1608,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/抹茶アイス.jpg",
+    "image_url": "http://localhost:3000/images/sweets/抹茶アイス.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1625,7 +1625,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/ショートケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/ショートケーキ.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1642,7 +1642,7 @@
     "tags": [
       "人気"
     ],
-    "imageUrl": "/images/sweets/シュークリーム.jpg",
+    "image_url": "http://localhost:3000/images/sweets/シュークリーム.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1659,7 +1659,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/いちご大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/いちご大福.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1676,7 +1676,7 @@
     "tags": [
       "SNS映え"
     ],
-    "imageUrl": "/images/sweets/パンケーキ.jpg",
+    "image_url": "http://localhost:3000/images/sweets/パンケーキ.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
@@ -1693,7 +1693,7 @@
     "tags": [
       "テイクアウト可"
     ],
-    "imageUrl": "/images/sweets/大福.jpg",
+    "image_url": "http://localhost:3000/images/sweets/大福.jpg",
     "coordinates": {
       "lat": 43.150000000000006,
       "lng": 141.43
