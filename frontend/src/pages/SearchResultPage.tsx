@@ -17,7 +17,7 @@ type ApiShop = {
   price: number;
   description: string;
   tags: string[];
-  imageUrl: string;
+  image_url: string;
 };
 
 /**
@@ -71,14 +71,14 @@ export default function SearchResultPage() {
    * 🔥 ShopCard用に変換
    */
   const mappedShops: Shop[] = shops.map((item) => ({
-    storeId: item.shopId,
+    storeId: item.id,
     name: item.shopName,
     address: "",
     time: "",
     category: item.category,
     price: String(item.price),
     holiday: "",
-    image: item.imageUrl,
+    image: item.image_url,
     sweets: [item.sweetName],
   }));
 
