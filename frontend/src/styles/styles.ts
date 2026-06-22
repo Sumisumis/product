@@ -86,7 +86,8 @@ export const styles = {
   },
 
   searchBox: {
-    marginBottom: "20px",
+    marginBottom: "24px",
+    display: "flex",
   },
 
   searchInput: {
@@ -94,8 +95,15 @@ export const styles = {
     padding: "12px 16px",
     border: "none",
     borderRadius: "12px",
-    fontSize: "16px",
+    fontSize: "24px",
     outline: "none",
+  },
+
+  searchButton: {
+  border: "none",
+  background: "transparent",
+  cursor: "pointer",
+  fontSize: "24px",
   },
 
   searchInfo: {

@@ -1,12 +1,11 @@
 import { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import {
   FiChevronLeft,
   FiChevronRight,
   FiClock,
   FiInfo,
   FiMapPin,
-  FiX,
 } from "react-icons/fi";
 import { LuCake } from "react-icons/lu";
 import { TbCurrencyYen } from "react-icons/tb";
@@ -189,23 +188,10 @@ function HeroSlide({ photo, count }: { photo: StorePhoto; count: number }) {
 }
 
 const Detail = () => {
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
 
   return (
-    <div className="detail-page">
-      <header className="detail-store-header">
-        <button
-          type="button"
-          className="detail-store-header-button"
-          aria-label="閉じる"
-          onClick={() => navigate(-1)}
-        >
-          <FiX size={22} />
-        </button>
-        <h1 className="detail-store-header-title">Cafe Bloom</h1>
-        <div className="detail-store-header-spacer" />
-      </header>
-
+    <div>
       <HeroCarousel photos={STORE_PHOTOS} />
 
       <main style={styles.content}>

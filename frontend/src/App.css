@@ -92,35 +92,12 @@ body {
   gap: 52px;
 }
 
-.search-bar {
-  border: 1px solid var(--choco-dark);
-  height: 56px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 0 12px;
-  font-size: 22px;
-  background: var(--choco-card);
-}
-
-.search-input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  color: var(--choco-text);
-}
-
 .search-input::placeholder {
   color: rgba(99, 72, 58, 0.35);
 }
 
 .search-input:focus {
   outline: none;
-}
-
-.search-icon {
-  font-size: 24px;
 }
 
 .photo-strip {
