@@ -49,7 +49,8 @@ export default function SearchResultPage() {
 
   const keyword =
     searchParams.get("keyword")?.trim().toLowerCase() || "";
-
+  const searchType =
+  searchParams.get("type") || "sweets";
   /**
    * 🔥 バックエンド取得
    */
@@ -85,18 +86,22 @@ export default function SearchResultPage() {
   /**
    * 🔥 フロント検索フィルター
    */
-  const filteredShops = mappedShops.filter((shop) =>
-    shop.name.toLowerCase().includes(keyword) ||
-    shop.category.toLowerCase().includes(keyword) ||
-    shop.sweets.some((s) =>
-      s.toLowerCase().includes(keyword)
-    )
+  const filteredShops = mappedShops.filter((shop) => {
+  if (searchType === "shops") {
+    return shop.name
+      .toLowerCase()
+      .includes(keyword);
+  }
+
+  return shop.sweets.some((sweet) =>
+    sweet.toLowerCase().includes(keyword)
   );
+});
 
   const handleSearch = () => {
     navigate(
-      `/search-result?keyword=${encodeURIComponent(query)}`
-    );
+    `/search-result?keyword=${encodeURIComponent(query)}&type=${searchType}`
+  );
   };
 
   return (
@@ -121,18 +126,17 @@ export default function SearchResultPage() {
           />
 
           <button
-            type="button"
-            onClick={handleSearch}
-            style={{
-              marginLeft: "10px",
-              padding: "10px 14px",
-              cursor: "pointer",
-              fontSize: "20px",
-              border: "none",
-              background: "transparent",
-            }}
-          >
-            🔍
+           type="button"
+           onClick={handleSearch}
+           style={{
+                marginLeft: "10px",
+                padding: "10px 14px",
+               cursor: "pointer",
+           }}
+            >
+              <span style={{ fontSize: "24px" }}>
+             🔍
+             </span>
           </button>
         </div>
 
