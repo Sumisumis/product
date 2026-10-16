@@ -51,16 +51,11 @@ const sweets = shops.flatMap((shop, i) =>
       id: `s${String(i * 10 + j + 1).padStart(3, "0")}`,
       shopId: shop.shopId,
       sweetName: sweet.name,
-      shopName: shop.shopName,
       category: sweet.category,
       price: 300 + Math.floor(Math.random() * 500),
       description: "人気のスイーツです",
       tags: getRandom(tagsList),
       imageUrl: `/images/sweets/${j + 1}.jpg`,
-      coordinates: {
-        lat: shop.lat,
-        lng: shop.lng
-      }
     };
   })
 );
