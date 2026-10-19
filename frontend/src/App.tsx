@@ -1,6 +1,7 @@
 import { NavLink, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Detail from "./Detail";
 import Home from "./Home";
+import Mypage from "./Mypage";
 import Search from "./Search";
 import SearchResultPage from "./pages/SearchResultPage";
 import "./App.css";
@@ -74,14 +75,7 @@ function App() {
           element={<SearchResultPage />}
         />
 
-        <Route
-          path="/mypage"
-          element={
-            <section className="placeholder-page">
-              マイページ
-            </section>
-          }
-        />
+        <Route path="/mypage" element={<Mypage />} />
 
         <Route
           path="*"
