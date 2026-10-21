@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 const Mypage = () => {
+  const navigate = useNavigate();
   return (
     <div className="mypage">
       <section className="mypage-profile" aria-label="ユーザー情報">
@@ -15,7 +18,11 @@ const Mypage = () => {
         <button type="button" className="mypage-link-button">
           設定
         </button>
-        <button type="button" className="mypage-link-button">
+        <button
+          type="button"
+          className="mypage-link-button"
+          onClick={() => navigate("/how-to-use")}
+        >
           使い方
         </button>
       </nav>

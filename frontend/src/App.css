@@ -552,3 +552,205 @@ body {
 .detail-store-header-spacer {
   width: 30px;
 }
+
+.howto-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+  background: #f6f2e8;
+}
+
+@media (max-width: 600px) {
+  .howto-page {
+    padding: 12px 8px;
+  }
+
+  .howto-page h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .howto-section {
+    padding: 8px 12px 20px;
+  }
+
+  .howto-section h2 {
+    font-size: 20px;
+    margin: 8px 0 14px;
+  }
+
+  .howto-section p {
+    font-size: 14px;
+  }
+
+  .howto-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 28px;
+  }
+}
+
+.howto-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.howto-slider {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.howto-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.howto-section {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+  padding: 10px 20px 30px;
+}
+
+.howto-number {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #6a4c3a;
+}
+
+.howto-section h2 {
+  text-align: center;
+  margin: 10px 0 20px;
+  color: #6a4c3a;
+}
+
+.howto-media {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto 20px;
+}
+
+.howto-media img,
+.howto-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background: #eeeeee;
+  border: 1px dashed #999999;
+  color: #666666;
+}
+
+.howto-section p {
+  line-height: 1.7;
+  text-align: center;
+}
+
+.howto-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.howto-slider {
+  flex: 1;
+  min-width: 0;
+}
+
+.howto-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 50%;
+  background: #6a4c3a;
+  color: white;
+
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.howto-arrow-left {
+  left: 5px;
+}
+
+.howto-arrow-right {
+  right: 5px;
+}
+
+.howto-arrow:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.howto-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.howto-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+  background: #cba990;
+
+  cursor: pointer;
+}
+
+.howto-dot.is-active {
+  background: #6a4c3a;
+}
+
+.howto-page-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.back-to-mypage {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background: #6a4c3a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-to-mypage:hover {
+  opacity: 0.85;
+}

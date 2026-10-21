@@ -4,6 +4,7 @@ import Home from "./Home";
 import Mypage from "./Mypage";
 import Search from "./Search";
 import SearchResultPage from "./pages/SearchResultPage";
+import HowToUse from "./pages/HowToUse";
 import "./App.css";
 
 function AppShell() {
@@ -73,6 +74,11 @@ function App() {
         <Route
           path="/search-result"
           element={<SearchResultPage />}
+        />
+
+<Route
+          path="/how-to-use"
+          element={<HowToUse />}
         />
 
         <Route path="/mypage" element={<Mypage />} />

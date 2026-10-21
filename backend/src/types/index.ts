@@ -20,4 +20,10 @@ export interface Store { //とりあえず3つのプロパティを追加した�
   shopId: string;
   shopName: string;
   description: string; 
+  //24行目以降、追加項目
+  address: string;
+  "business-hours": string;
+  "regular-holiday": string;
+  image_url: string;
+  coordinates: Coordinates;
 }
