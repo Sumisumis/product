@@ -27,3 +27,17 @@ export interface Store { //とりあえず3つのプロパティを追加した�
   image_url: string;
   coordinates: Coordinates;
 }
+
+//ユーザープロフィール
+export interface UserProfile {
+  userId: string;
+  nickname: string;
+  email: string;
+  address: string;
+  birthday: string;
+  age: number;
+  iconUrl: string;
+  locationEnabled: boolean;
+  emailSubscription: boolean;
+  favoriteShopIds: string[];
+}
