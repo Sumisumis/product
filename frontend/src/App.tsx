@@ -57,7 +57,7 @@ function App() {
       <Route element={<AppShell />}>
         <Route
           path="/"
-          element={<Navigate to="/search" replace />}
+          element={<Navigate to="/home" replace />}
         />
 
         <Route
@@ -91,7 +91,7 @@ function App() {
 
         <Route
           path="*"
-          element={<Navigate to="/search" replace />}
+          element={<Navigate to="/home" replace />}
         />
       </Route>
     </Routes>
