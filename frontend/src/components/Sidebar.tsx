@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { FiX, FiHome, FiSearch, FiHeart, FiSettings, FiChevronRight } from "react-icons/fi";
+import { FiX, FiHome, FiSearch, FiHeart, FiSettings, FiChevronRight, FiHelpCircle } from "react-icons/fi";
 
 type Props = { id?: string; sidebarOpen: boolean; closeSidebar: () => void };
 
@@ -29,6 +29,7 @@ export default function Sidebar({ id, sidebarOpen, closeSidebar }: Props) {
       <NavLink to="/home" onClick={closeSidebar}><FiHome />ホーム<FiChevronRight /></NavLink>
       <NavLink to="/search" onClick={closeSidebar}><FiSearch />カテゴリから探す<FiChevronRight /></NavLink>
       <NavLink to="/mypage" onClick={closeSidebar}><FiHeart />お気に入り<FiChevronRight /></NavLink>
+      <NavLink to="/how-to-use" onClick={closeSidebar}><FiHelpCircle />使い方<FiChevronRight /></NavLink>
       <span className="sidebar-unavailable"><FiSettings />設定<small>準備中</small></span>
     </nav>
     <p className="sidebar-note">HAKODATE SWEETS GUIDE</p>

@@ -5,7 +5,7 @@ import path from 'path';
 import homeRoutes from './routes/home/home';
 import detailRoutes from './routes/stores/detail';
 import sweetsRoutes from './routes/sweets/sweets';
-import searchRoutes from './routes/search/search';
+import searchRoutes from './routes/search/index';
 
 
 const app = express();

@@ -15,7 +15,7 @@ interface SweetProduct {
   id: string;
   shopId: string;
   sweetName: string;
-  shopName: string;
+  shopName?: string;
   category: string;
   price: number;
   description: string;
@@ -54,7 +54,7 @@ function NewSweetsCarousel({ sweets }: { sweets: SweetProduct[] }) {
     {sweets.length === 0 ? <div className="notice-card">新商品の情報は準備中です。</div> : <div className="sweets-rail" ref={track} aria-label="新商品">
       {sweets.map((sweet) => <Link to={`/stores/${sweet.shopId}`} key={sweet.id} className="sweet-card">
         <div className="sweet-image-wrap"><SweetImage src={assetUrl(sweet.image_url)} alt={sweet.sweetName} className="sweet-image" /><span className="sweet-badge">NEW</span></div>
-        <div className="sweet-body"><span className="category-label">{sweet.category}</span><h3>{sweet.sweetName}</h3><p>{sweet.shopName}</p><strong>¥{sweet.price.toLocaleString("ja-JP")}</strong></div>
+        <div className="sweet-body"><span className="category-label">{sweet.category}</span><h3>{sweet.sweetName}</h3>{sweet.shopName && <p>{sweet.shopName}</p>}<strong>¥{sweet.price.toLocaleString("ja-JP")}</strong></div>
       </Link>)}
     </div>}
   </section>;

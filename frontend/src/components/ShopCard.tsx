@@ -9,11 +9,11 @@ export default function ShopCard({ shop }: { shop: Shop }) {
     <SweetImage src={shop.image} alt={shop.sweets?.[0] ?? shop.name} className="shop-card-image" />
     <div className="shop-card-body"><span className="category-label">{shop.category}</span>
       <h2>{shop.sweets?.[0] ?? shop.name}</h2>
-      {shop.sweets?.length ? <p className="shop-card-name">{shop.name}</p> : null}
+      {shop.sweets?.length && shop.name ? <p className="shop-card-name">{shop.name}</p> : null}
       {shop.address && <p className="shop-card-meta"><FiMapPin />{shop.address}</p>}
       {shop.time && <p className="shop-card-meta"><FiClock />{shop.time}</p>}
       {shop.holiday && <p className="shop-card-meta">定休日：{shop.holiday}</p>}
-      <div className="shop-card-footer"><strong>{Number.isFinite(numericPrice) ? `¥${numericPrice.toLocaleString("ja-JP")}` : shop.price}</strong><FiChevronRight size={18} /></div>
+      <div className="shop-card-footer">{shop.price ? <strong>{Number.isFinite(numericPrice) ? `¥${numericPrice.toLocaleString("ja-JP")}` : shop.price}</strong> : <span className="category-label">店舗詳細を見る</span>}<FiChevronRight size={18} /></div>
     </div>
   </article>;
 }

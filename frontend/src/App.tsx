@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import Home from "./Home";
 import Search from "./Search";
 import SearchResultPage from "./pages/SearchResultPage";
+import HowToUse from "./pages/HowToUse";
 import "./App.css";
 
 function AppShell() {
@@ -47,6 +48,7 @@ function MyPage() {
       <h2>お気に入りを、ここに。</h2><p>お気に入りの保存機能は準備中です。<br />まずは気になるスイーツを探してみませんか。</p>
       <NavLink to="/search" className="primary-link">スイーツを探す<FiArrowRight /></NavLink>
     </section>
+    <NavLink to="/how-to-use" className="back-link">アプリの使い方<FiArrowRight /></NavLink>
   </div>;
 }
 
@@ -58,6 +60,7 @@ export default function App() {
     <Route path="/search-result" element={<SearchResultPage />} />
     <Route path="/stores/:storeId" element={<Detail />} />
     <Route path="/mypage" element={<MyPage />} />
+    <Route path="/how-to-use" element={<HowToUse />} />
     <Route path="*" element={<Navigate to="/search" replace />} />
   </Route></Routes>;
 }

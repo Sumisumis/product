@@ -1,0 +1,133 @@
+[
+    {
+        "shopId": "shop01",
+        "shopName": "スイーツ店1",
+        "description": "和菓子も洋菓子も種類豊富なラインナップがそろっています",
+        "address": "北海道函館市美原",
+        "business-hours": "10時～18時",
+        "regular-holiday": "月曜日",
+        "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
+        "coordinates": {
+            "lat": 43.06,
+            "lng": 141.34
+        }
+    },
+  {
+        "shopId": "shop02",
+        "shopName": "スイーツ店2",
+        "description": "季節のフルーツやタルトが楽しめるお店です",
+        "address": "北海道函館市本町",
+        "business-hours": "10時～19時",
+        "regular-holiday": "火曜日",
+        "image_url": "http://localhost:3000/images/sweets/cake.jpg",
+        "coordinates": {
+            "lat": 41.79,
+            "lng": 140.75
+        }
+        
+    },
+    {
+        "shopId": "shop03",
+        "shopName": "スイーツ店3",
+        "description": "カカオの風味にこだわったチョコレートや焼き菓子が自慢のお店です",
+        "address": "北海道函館市五稜郭町",
+        "business-hours": "11時～18時",
+        "regular-holiday": "水曜日",
+        "image_url": "http://localhost:3000/images/sweets/chocolate.jpg",
+        "coordinates": {
+            "lat": 41.80,
+            "lng": 140.76
+        }
+    },
+    {
+        "shopId": "shop04",
+        "shopName": "スイーツ店4",
+        "description": "ふわふわのドーナツや焼きたてのマフィンが人気のお店です",
+        "address": "北海道函館市湯川町",
+        "business-hours": "9時～17時",
+        "regular-holiday": "木曜日",
+        "image_url": "http://localhost:3000/images/sweets/donut.jpg",
+        "coordinates": {
+            "lat": 41.78,
+            "lng": 140.79
+        }
+    },
+    {
+        "shopId": "shop05",
+        "shopName": "スイーツ店5",
+        "description": "なめらかなプリンやクリームたっぷりのシュークリームが楽しめます",
+        "address": "北海道函館市昭和",
+        "business-hours": "10時～18時",
+        "regular-holiday": "月曜日",
+        "image_url": "http://localhost:3000/images/sweets/pudding.jpg",
+        "coordinates": {
+            "lat": 41.81,
+            "lng": 140.73
+        }
+    },
+    {
+        "shopId": "shop06",
+        "shopName": "スイーツ店6",
+        "description": "素材のおいしさをいかしたアイスクリームやジェラートが自慢です",
+        "address": "北海道函館市港町",
+        "business-hours": "11時～20時",
+        "regular-holiday": "火曜日",
+        "image_url": "http://localhost:3000/images/sweets/icecream.jpg",
+        "coordinates": {
+            "lat": 41.81,
+            "lng": 140.72
+        }
+    },
+    {
+        "shopId": "shop07",
+        "shopName": "スイーツ店7",
+        "description": "昔ながらの製法を大切にした和菓子や大福が楽しめます",
+        "address": "北海道函館市松風町",
+        "business-hours": "9時～17時",
+        "regular-holiday": "水曜日",
+        "image_url": "http://localhost:3000/images/sweets/daifuku.jpg",
+        "coordinates": {
+            "lat": 41.77,
+            "lng": 140.73
+        }
+    },
+    {
+        "shopId": "shop08",
+        "shopName": "スイーツ店8",
+        "description": "サクサクのアップルパイやこだわりのしっとりパウンドケーキが人気です",
+        "address": "北海道函館市石川町",
+        "business-hours": "10時～18時",
+        "regular-holiday": "木曜日",
+        "image_url": "http://localhost:3000/images/sweets/apple-pie.jpg",
+        "coordinates": {
+            "lat": 41.83,
+            "lng": 140.74
+        }
+    },
+    {
+        "shopId": "shop09",
+        "shopName": "スイーツ店9",
+        "description": "カラフルなマカロンや種類豊富なクッキーがそろっているお店です",
+        "address": "北海道函館市中道",
+        "business-hours": "10時～19時",
+        "regular-holiday": "金曜日",
+        "image_url": "http://localhost:3000/images/sweets/macaron.jpg",
+        "coordinates": {
+            "lat": 41.80,
+            "lng": 140.74
+        }
+    },
+    {
+        "shopId": "shop10",
+        "shopName": "スイーツ店10",
+        "description": "ふわふわのパンケーキや絶品フレンチトーストが楽しめるお店です",
+        "address": "北海道函館市美原",
+        "business-hours": "9時～18時",
+        "regular-holiday": "日曜日",
+        "image_url": "http://localhost:3000/images/sweets/pancake.jpg",
+        "coordinates": {
+            "lat": 41.82,
+            "lng": 140.75
+        }
+    }
+]
