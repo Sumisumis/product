@@ -1,5 +1,8 @@
-import { useState, useEffect } from 'react';
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { FiArrowRight, FiChevronLeft, FiChevronRight, FiMapPin, FiCalendar, FiRefreshCw } from "react-icons/fi";
+import SearchForm from "./components/SearchForm";
+import SweetImage from "./components/SweetImage";
 
 interface FeatureArticle {
   id: string;
@@ -37,180 +40,68 @@ interface HomeData {
   limitedStore: LimitedStore;
 }
 
-const VISIBLE_COUNT = 2;
+const assetUrl = (url: string) => url.startsWith("/images/") ? `http://localhost:3000${url}` : url;
 
 function NewSweetsCarousel({ sweets }: { sweets: SweetProduct[] }) {
-  const count = sweets.length;
-  const maxIndex = Math.max(0, count - VISIBLE_COUNT);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const goPrev = () => setActiveIndex((i) => Math.max(i - 1, 0));
-  const goNext = () => setActiveIndex((i) => Math.min(i + 1, maxIndex));
-
-  if (count === 0) {
-    return <p className="limited-store-empty">新商品はありません。</p>;
-  }
-
-  const slideOffsetPercent = count > 0 ? (activeIndex * 100) / count : 0;
-
-  return (
-    <div aria-roledescription="carousel" aria-label="新商品">
-      <div className="new-sweets-carousel-wrap">
-        <button
-          type="button"
-          className="carousel-arrow"
-          aria-label="前の商品"
-          onClick={goPrev}
-          disabled={activeIndex === 0}
-        >
-          <FiChevronLeft size={18} />
-        </button>
-
-        <div className="new-sweets-viewport">
-          <div
-            className="new-sweets-track"
-            style={{
-              width: `${(count / VISIBLE_COUNT) * 100}%`,
-              transform: `translateX(-${slideOffsetPercent}%)`,
-            }}
-          >
-            {sweets.map((sweet) => (
-              <a
-                href={`/sweet/${sweet.shopId}`}
-                key={sweet.id}
-                className="sweet-carousel-item"
-                style={{ width: `${100 / count}%` }}
-              >
-                <div className="sweet-carousel-item-inner">
-                  <img
-                    src={sweet.image_url}
-                    alt={sweet.sweetName}
-                    className="sweet-carousel-image"
-                    loading="lazy"
-                  />
-                  <div className="sweet-carousel-body">
-                    <h4 className="sweet-carousel-name">{sweet.sweetName}</h4>
-                    <p className="sweet-carousel-shop">{sweet.shopName}</p>
-                    <p className="sweet-carousel-price">{sweet.price}円</p>
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-
-        <button
-          type="button"
-          className="carousel-arrow"
-          aria-label="次の商品"
-          onClick={goNext}
-          disabled={activeIndex >= maxIndex}
-        >
-          <FiChevronRight size={18} />
-        </button>
+  const track = useRef<HTMLDivElement>(null);
+  return <section>
+    <div className="section-heading"><div><p className="eyebrow">SWEET DISCOVERIES</p><h2>新しいおいしさ、見つけた。</h2></div>
+      <div className="carousel-controls">
+        <button className="icon-button" aria-label="前の商品" onClick={() => track.current?.scrollBy({ left: -track.current.clientWidth * 0.8, behavior: "smooth" })}><FiChevronLeft /></button>
+        <button className="icon-button" aria-label="次の商品" onClick={() => track.current?.scrollBy({ left: track.current.clientWidth * 0.8, behavior: "smooth" })}><FiChevronRight /></button>
       </div>
     </div>
-  );
+    {sweets.length === 0 ? <div className="notice-card">新商品の情報は準備中です。</div> : <div className="sweets-rail" ref={track} aria-label="新商品">
+      {sweets.map((sweet) => <Link to={`/stores/${sweet.shopId}`} key={sweet.id} className="sweet-card">
+        <div className="sweet-image-wrap"><SweetImage src={assetUrl(sweet.image_url)} alt={sweet.sweetName} className="sweet-image" /><span className="sweet-badge">NEW</span></div>
+        <div className="sweet-body"><span className="category-label">{sweet.category}</span><h3>{sweet.sweetName}</h3><p>{sweet.shopName}</p><strong>¥{sweet.price.toLocaleString("ja-JP")}</strong></div>
+      </Link>)}
+    </div>}
+  </section>;
 }
 
-const Home = () => {
-  //backendからのデータを格納するstate
+export default function Home() {
   const [homeData, setHomeData] = useState<HomeData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  //画面が開いたときにデータを取得する
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [attempt, setAttempt] = useState(0);
   useEffect(() => {
-    const fetchHomeData = async () => {
-      try {
-        //APIエンドポイントにリクエストを送る
-        const response = await fetch('http://localhost:3000/api/home');
+    const controller = new AbortController();
+    fetch("http://localhost:3000/api/home", { signal: controller.signal })
+      .then((response) => { if (!response.ok) throw new Error("ホーム情報を取得できませんでした"); return response.json(); })
+      .then((data: HomeData) => { setHomeData(data); setStatus("ready"); })
+      .catch(() => { if (!controller.signal.aborted) setStatus("error"); });
+    return () => controller.abort();
+  }, [attempt]);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setHomeData(data);
-      } catch (error) {
-        console.error('HomeDataの取得に失敗しました:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchHomeData();
-  }, []);
-
-  if (loading) return <div className="home-loading">Loading...</div>;
-  if (!homeData) return <div className="home-error">データの取得に失敗しました。</div>;
-
-  return (
-    <div className="home-page">
-      <section className="home-card">
-        <h3 className="home-section-title">期間・季節限定特集</h3>
-        <div className="feature-grid">
-          {homeData.features.map((article) => (
-            <a href={article.link_url} key={article.id} className="feature-card">
-              <div className="feature-card-inner">
-                <img
-                  src={article.image_url}
-                  alt={article.title}
-                  className="feature-card-image"
-                  loading="lazy"
-                />
-                <div className="feature-card-body">
-                  <h4 className="feature-card-title">{article.title}</h4>
-                  <span className="feature-card-link">続きを読む →</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
+  return <div className="page-stack home-page">
+    <section className="home-hero">
+      <img className="hero-photo" src={`${import.meta.env.BASE_URL}images/editorial/ショートケーキ.jpg`} alt="いちごとクリームを重ねたショートケーキ" fetchPriority="high" />
+      <div className="hero-copy"><span className="hero-location"><FiMapPin size={13} />函館のスイーツガイド</span>
+        <h1>函館で見つける、<br />甘いしあわせ。</h1><p>いつもの街に、まだ知らないおいしさ。<br />今日のひとくちを探しに行こう。</p>
+        <Link to="/search" className="hero-link">スイーツを探す<FiArrowRight size={18} /></Link>
+      </div>
+    </section>
+    <div className="home-search"><SearchForm /><div className="quick-keywords"><span>気になる甘さ</span>{["ケーキ", "和菓子", "カフェスイーツ"].map((word) => <Link key={word} to={`/search-result?keyword=${encodeURIComponent(word)}`}>{word}<FiArrowRight size={12} /></Link>)}</div></div>
+    {status === "loading" && <div className="loading-state" role="status"><span className="loading-dot" />スイーツの情報を読み込んでいます…</div>}
+    {status === "error" && <div className="notice-card" role="alert"><div><h2>最新の情報を読み込めませんでした</h2><p>接続を確認して、もう一度お試しください。</p></div><button className="text-button" onClick={() => { setStatus("loading"); setAttempt((n) => n + 1); }}><FiRefreshCw />再読み込み</button></div>}
+    {homeData && <>
+      <NewSweetsCarousel sweets={homeData.newSweets} />
+      <section><div className="section-heading"><div><p className="eyebrow">SWEETS JOURNAL</p><h2>季節のおいしい読みもの</h2></div><span className="section-note">特集</span></div>
+        <div className="feature-grid">{homeData.features.map((article) => <a href={article.link_url} key={article.id} className="feature-card">
+          <SweetImage src={assetUrl(article.image_url)} alt={article.title} className="feature-card-image" />
+          <div className="feature-card-body"><span className="category-label">季節の特集</span><h3>{article.title}</h3><span className="feature-card-link">続きを読む<FiArrowRight /></span></div>
+        </a>)}</div>
       </section>
-
-      <section className="home-card">
-        <h3 className="home-section-title">新商品まとめ</h3>
-        <NewSweetsCarousel sweets={homeData.newSweets} />
+      <section><div className="section-heading"><div><p className="eyebrow">POP-UP INFORMATION</p><h2>期間限定のお楽しみ</h2></div></div>
+        {!homeData.limitedStore.hasStore ? <div className="notice-card">現在、期間限定出店のお知らせはありません。</div> :
+          <Link to={`/stores/${homeData.limitedStore.shopId}`} className="limited-store-card">
+            <SweetImage src={assetUrl(homeData.limitedStore.image_url)} alt={homeData.limitedStore.shopName} className="limited-store-image" />
+            <div className="limited-store-body"><span className="category-label">期間限定出店</span><h3>{homeData.limitedStore.shopName}</h3><p>{homeData.limitedStore.description}</p>
+              <div className="event-meta"><span><FiCalendar />{homeData.limitedStore.date}</span><span><FiMapPin />{homeData.limitedStore.location}</span></div>
+            </div><FiChevronRight className="limited-store-arrow" />
+          </Link>}
       </section>
-
-      <section className="home-card">
-        <h3 className="home-section-title">期間限定出店情報</h3>
-        {!homeData.limitedStore.hasStore ? (
-          <p className="limited-store-empty">現在期間限定出店はありません。</p>
-        ) : (
-          <a
-            href={`/stores/${homeData.limitedStore.shopId}`}
-            className="limited-store-link"
-          >
-            <div className="limited-store-card">
-              <img
-                src={homeData.limitedStore.image_url}
-                alt={homeData.limitedStore.shopName}
-                className="limited-store-image"
-                loading="lazy"
-              />
-              <div className="limited-store-body">
-                <h4 className="limited-store-name">{homeData.limitedStore.shopName}</h4>
-                <p className="limited-store-desc">{homeData.limitedStore.description}</p>
-                <table className="limited-store-meta">
-                  <tbody>
-                    <tr>
-                      <th>日時:</th>
-                      <td>{homeData.limitedStore.date}</td>
-                    </tr>
-                    <tr>
-                      <th>場所:</th>
-                      <td>{homeData.limitedStore.location}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </a>
-        )}
-      </section>
-    </div>
-  );
-};
-
-export default Home;
+    </>}
+    <footer className="page-footer">ちょこはこ<span>函館で見つける、甘いしあわせ。</span></footer>
+  </div>;
+}

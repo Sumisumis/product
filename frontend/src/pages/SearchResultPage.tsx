@@ -1,155 +1,39 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
-
-import Sidebar from "../components/Sidebar";
+import { Link, useSearchParams } from "react-router-dom";
+import { FiArrowLeft, FiSearch, FiRefreshCw } from "react-icons/fi";
 import ShopCard from "../components/ShopCard";
-import { styles } from "../styles/styles";
+import SearchForm from "../components/SearchForm";
 
-/**
- * 🔥 バックエンドのデータ
- */
-type ApiShop = {
-  id: string;
-  shopId: string;
-  sweetName: string;
-  shopName: string;
-  category: string;
-  price: number;
-  description: string;
-  tags: string[];
-  image_url: string;
-};
-
-/**
- * 🔥 ShopCard用に変換した型
- */
-type Shop = {
-  storeId: string;
-  name: string;
-  address: string;
-  time: string;
-  category: string;
-  price: string;
-  holiday: string;
-  image: string;
-  sweets: string[];
-};
+type ApiShop = { id: string; shopId: string; sweetName: string; shopName: string; category: string; price: number; image_url: string };
 
 export default function SearchResultPage() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
-  const [query, setQuery] = useState(
-    searchParams.get("keyword") || ""
-  );
-
+  const query = searchParams.get("keyword")?.trim() || "";
+  const keyword = query.toLowerCase();
   const [shops, setShops] = useState<ApiShop[]>([]);
+  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
+  const [attempt, setAttempt] = useState(0);
 
-  const keyword =
-    searchParams.get("keyword")?.trim().toLowerCase() || "";
-
-  /**
-   * 🔥 バックエンド取得
-   */
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/api/search");
-        const data = await res.json();
-        setShops(data);
-      } catch (error) {
-        console.error("取得失敗:", error);
-      }
-    };
+    const controller = new AbortController();
+    fetch("http://localhost:3000/api/search", { signal: controller.signal })
+      .then((response) => { if (!response.ok) throw new Error("検索データを取得できませんでした"); return response.json(); })
+      .then((data: ApiShop[]) => { setShops(data); setStatus("ready"); })
+      .catch(() => { if (!controller.signal.aborted) setStatus("error"); });
+    return () => controller.abort();
+  }, [attempt]);
 
-    fetchData();
-  }, []);
-
-  /**
-   * 🔥 ShopCard用に変換
-   */
-  const mappedShops: Shop[] = shops.map((item) => ({
-    storeId: item.id,
-    name: item.shopName,
-    address: "",
-    time: "",
-    category: item.category,
-    price: String(item.price),
-    holiday: "",
-    image: item.image_url,
-    sweets: [item.sweetName],
-  }));
-
-  /**
-   * 🔥 フロント検索フィルター
-   */
-  const filteredShops = mappedShops.filter((shop) =>
-    shop.name.toLowerCase().includes(keyword) ||
-    shop.category.toLowerCase().includes(keyword) ||
-    shop.sweets.some((s) =>
-      s.toLowerCase().includes(keyword)
-    )
-  );
-
-  const handleSearch = () => {
-    navigate(
-      `/search-result?keyword=${encodeURIComponent(query)}`
-    );
-  };
-
-  return (
-    <div style={styles.body}>
-      <Sidebar
-        sidebarOpen={sidebarOpen}
-        closeSidebar={() => setSidebarOpen(false)}
-      />
-
-      <main style={styles.main}>
-        {/* 🔍 search */}
-        <div style={styles.searchBox}>
-          <input
-            type="text"
-            placeholder="検索..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSearch();
-            }}
-            style={styles.searchInput}
-          />
-
-          <button
-            type="button"
-            onClick={handleSearch}
-            style={{
-              marginLeft: "10px",
-              padding: "10px 14px",
-              cursor: "pointer",
-              fontSize: "20px",
-              border: "none",
-              background: "transparent",
-            }}
-          >
-            🔍
-          </button>
-        </div>
-
-        {/* 🏪 results */}
-        {filteredShops.map((shop) => (
-          <Link
-            key={shop.storeId}
-            to={`/stores/${shop.storeId}`}
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <ShopCard shop={shop} />
-          </Link>
-        ))}
-      </main>
+  const filteredShops = shops.filter((shop) => [shop.shopName, shop.category, shop.sweetName].some((value) => value.toLowerCase().includes(keyword)));
+  return <div className="page-stack">
+    <Link to="/search" className="back-link"><FiArrowLeft />探す画面に戻る</Link>
+    <SearchForm key={query} initialQuery={query} />
+    <div className="section-heading results-heading"><div><p className="eyebrow">SEARCH RESULTS</p><h1>{query ? `「${query}」の検索結果` : "すべてのスイーツ"}</h1></div>
+      {status === "ready" && <span className="result-count"><strong>{filteredShops.length}</strong> 件</span>}
     </div>
-  );
+    {status === "loading" && <div className="loading-state" role="status"><span className="loading-dot" />スイーツを探しています…</div>}
+    {status === "error" && <div className="empty-state" role="alert"><span className="state-icon"><FiRefreshCw size={28} /></span><h2>情報を読み込めませんでした</h2><p>接続を確認して、もう一度お試しください。</p><button className="primary-link" onClick={() => { setStatus("loading"); setAttempt((n) => n + 1); }}>再読み込み<FiRefreshCw /></button></div>}
+    {status === "ready" && (filteredShops.length ? <div className="results-grid">{filteredShops.map((item) =>
+      <Link key={item.id} to={`/stores/${item.shopId}`} className="shop-card-link"><ShopCard shop={{ name: item.shopName, address: "", time: "", category: item.category, price: String(item.price), holiday: "", image: item.image_url, sweets: [item.sweetName] }} /></Link>
+    )}</div> : <div className="empty-state"><span className="state-icon"><FiSearch size={28} /></span><h2>スイーツが見つかりませんでした</h2><p>別の名前やカテゴリで探してみてください。</p><Link className="primary-link" to="/search">カテゴリから探す</Link></div>)}
+  </div>;
 }
