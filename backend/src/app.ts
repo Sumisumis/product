@@ -6,7 +6,10 @@ import homeRoutes from './routes/home/home';
 import storesRoutes from './routes/stores/detail';
 import sweetsRoutes from './routes/sweets/sweets';
 import searchRoutes from './routes/search/index';
+<<<<<<< HEAD
 import userRoutes from './routes/user/index';
+=======
+>>>>>>> 53cd18b16e7477897edd475e11dd6b49e7d051d0
 
 
 const app = express();
