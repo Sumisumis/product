@@ -3,9 +3,13 @@ import cors from 'cors';
 import path from 'path';
 
 import homeRoutes from './routes/home/home';
-import detailRoutes from './routes/stores/detail';
+import storesRoutes from './routes/stores/detail';
 import sweetsRoutes from './routes/sweets/sweets';
 import searchRoutes from './routes/search/index';
+<<<<<<< HEAD
+import userRoutes from './routes/user/index';
+=======
+>>>>>>> 53cd18b16e7477897edd475e11dd6b49e7d051d0
 
 
 const app = express();
@@ -27,9 +31,10 @@ app.get('/api', (req: Request, res: Response) => {
 });
 
 app.use('/api/home', homeRoutes);
-app.use('/api/stores', detailRoutes);
+app.use('/api/stores', storesRoutes);
 app.use('/api/sweets', sweetsRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/user', userRoutes);
 app.use('/images', express.static(path.join(process.cwd(), 'public/images')));
 
 app.listen(port, () => {

@@ -1,0 +1,16 @@
+{
+  "userId": "user_001",
+  "nickname": "はこだて太郎",
+  "email": "taro@example.com",
+  "address": "北海道函館市元町X-X",
+  "birthday": "2000-05-01",
+  "age": 26,
+  "iconUrl": "62ebccdb-0e12-45f4-913a-9efe5a5bffe9.jpeg",
+  "locationEnabled": true,
+  "emailSubscription": false,
+  "favoriteShopIds": [
+    "shop01",
+    "shop05",
+    "shop10"
+  ]
+}
