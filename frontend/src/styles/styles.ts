@@ -91,7 +91,7 @@ export const styles = {
   },
 
   searchInput: {
-    width: "100%",
+    flex: 1,
     padding: "12px 16px",
     border: "none",
     borderRadius: "12px",
