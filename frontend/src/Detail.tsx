@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-//import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   FiChevronLeft,
   FiChevronRight,
@@ -73,9 +73,9 @@ const STORE_PHOTOS = [
 
 type StorePhoto = (typeof STORE_PHOTOS)[number];
 
-const HERO_HEIGHT = 176;
+const HERO_HEIGHT = "clamp(220px, 35vw, 380px)";
 /** 店舗詳細欄（content）の上余白と揃える */
-const SECTION_GAP = 8;
+const SECTION_GAP = 20;
 
 function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -188,13 +188,14 @@ function HeroSlide({ photo, count }: { photo: StorePhoto; count: number }) {
 }
 
 const Detail = () => {
- // const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="detail-layout">
+      <Link to="/search" className="back-link"><FiChevronLeft />スイーツを探す</Link>
+      <div className="detail-intro"><p className="eyebrow">SHOP INFORMATION</p><h1>店舗詳細</h1><p>掲載内容はサンプルです。</p></div>
       <HeroCarousel photos={STORE_PHOTOS} />
 
-      <main style={styles.content}>
+      <div style={styles.content}>
         <section style={styles.card}>
           {shopInfo.map((item) => (
             <div key={item.label} style={styles.infoRow}>
@@ -212,14 +213,14 @@ const Detail = () => {
           <div style={styles.menuGrid}>
             {menuItems.map((item) => (
               <article key={item.name} style={styles.menuItem}>
-                <div style={styles.menuImage}>画像</div>
+                <div className="detail-menu-placeholder"><LuCake size={24} /><span>写真準備中</span></div>
                 <h3 style={styles.menuName}>{item.name}</h3>
                 <p style={styles.menuPrice}>{item.price}</p>
               </article>
             ))}
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };
@@ -228,11 +229,13 @@ const styles = {
   hero: {
     height: HERO_HEIGHT,
     marginTop: 0,
-    backgroundColor: "#f2eee6",
+    backgroundColor: "#f1e9e0",
     display: "flex",
     alignItems: "center",
     gap: 8,
-    padding: "0 10px",
+    padding: "0",
+    borderRadius: 18,
+    overflow: "hidden",
     position: "relative" as const,
     boxSizing: "border-box" as const,
   },
@@ -241,7 +244,7 @@ const styles = {
     height: "100%",
     overflow: "hidden",
     position: "relative" as const,
-    backgroundColor: "#f2eee6",
+    backgroundColor: "#f1e9e0",
   },
   heroTrack: {
     display: "flex",
@@ -255,14 +258,14 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#f2eee6",
+    backgroundColor: "#f1e9e0",
   },
   heroImage: {
     maxWidth: "100%",
     maxHeight: "100%",
-    width: "auto",
-    height: "auto",
-    objectFit: "contain" as const,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover" as const,
     display: "block",
   },
   heroPlaceholder: {
@@ -270,18 +273,18 @@ const styles = {
     height: "100%",
     display: "grid",
     placeItems: "center",
-    backgroundColor: "#f2eee6",
+    backgroundColor: "#f1e9e0",
     color: "#a89585",
     fontSize: 13,
     fontFamily: FONT,
   },
   heroArrow: {
-    width: 30,
-    height: 30,
+    width: 36,
+    height: 44,
     borderRadius: "50%",
     border: "none",
     backgroundColor: "#f8f8f8",
-    color: "#c5a58b",
+    color: "#725244",
     display: "grid",
     placeItems: "center",
     cursor: "pointer",
@@ -321,28 +324,29 @@ const styles = {
   card: {
     backgroundColor: "#fff",
     borderRadius: 16,
-    padding: 12,
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.06)",
+    padding: 22,
+    border: "1px solid var(--line)",
+    boxShadow: "var(--shadow-card)",
   },
   infoRow: {
     display: "flex",
     gap: 10,
-    padding: "7px 0",
+    padding: "13px 0",
     borderBottom: "1px solid #f2f2f2",
   },
   infoIcon: {
     width: 20,
     display: "grid",
     placeItems: "center",
-    color: "#c7a58b",
+    color: "#96725c",
     marginTop: 2,
   },
   infoBody: { flex: 1 },
   infoLabel: {
     fontSize: 12,
-    fontWeight: 400,
+    fontWeight: 500,
     fontFamily: FONT,
-    color: "#b6b2ad",
+    color: "#796d66",
     marginBottom: 2,
   },
   infoValue: {
@@ -350,7 +354,7 @@ const styles = {
     fontWeight: 500,
     fontFamily: FONT,
     color: "#332725",
-    lineHeight: 1.45,
+    lineHeight: 1.8,
   },
   sectionTitle: {
     margin: "0 0 10px",
@@ -364,7 +368,7 @@ const styles = {
   },
   menuGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateColumns: "repeat(auto-fit, minmax(115px, 1fr))",
     gap: 10,
   },
   menuItem: { margin: 0 },
@@ -390,7 +394,7 @@ const styles = {
     fontSize: 13,
     fontWeight: 500,
     fontFamily: FONT,
-    color: "#c49f83",
+    color: "#725244",
   },
 };
 
