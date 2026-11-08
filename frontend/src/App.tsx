@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { NavLink, Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
-import { FiHome, FiMenu, FiSearch, FiUser, FiArrowRight, FiHeart } from "react-icons/fi";
+import { FiHome, FiMenu, FiSearch, FiUser } from "react-icons/fi";
 import Detail from "./Detail";
 import Sidebar from "./components/Sidebar";
 import Home from "./Home";
+import Mypage from "./Mypage";
 import Search from "./Search";
 import SearchResultPage from "./pages/SearchResultPage";
 import HowToUse from "./pages/HowToUse";
@@ -41,26 +42,20 @@ function AppShell() {
   );
 }
 
-function MyPage() {
-  return <div className="page-stack">
-    <div className="page-heading"><p className="eyebrow">MY PAGE</p><h1>マイページ</h1><p>自分だけの、スイーツの楽しみ方を。</p></div>
-    <section className="empty-state profile-card"><span className="state-icon"><FiHeart size={30} /></span>
-      <h2>お気に入りを、ここに。</h2><p>お気に入りの保存機能は準備中です。<br />まずは気になるスイーツを探してみませんか。</p>
-      <NavLink to="/search" className="primary-link">スイーツを探す<FiArrowRight /></NavLink>
-    </section>
-    <NavLink to="/how-to-use" className="back-link">アプリの使い方<FiArrowRight /></NavLink>
-  </div>;
-}
 
 export default function App() {
-  return <Routes><Route element={<AppShell />}>
-    <Route path="/" element={<Navigate to="/search" replace />} />
-    <Route path="/home" element={<Home />} />
-    <Route path="/search" element={<Search />} />
-    <Route path="/search-result" element={<SearchResultPage />} />
-    <Route path="/stores/:storeId" element={<Detail />} />
-    <Route path="/mypage" element={<MyPage />} />
-    <Route path="/how-to-use" element={<HowToUse />} />
-    <Route path="*" element={<Navigate to="/search" replace />} />
-  </Route></Routes>;
+  return (
+    <Routes>
+      <Route element={<AppShell />}>
+        <Route path="/" element={<Navigate to="/search" replace />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/search-result" element={<SearchResultPage />} />
+        <Route path="/stores/:storeId" element={<Detail />} />
+        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/how-to-use" element={<HowToUse />} />
+        <Route path="*" element={<Navigate to="/search" replace />} />
+      </Route>
+    </Routes>
+  );
 }

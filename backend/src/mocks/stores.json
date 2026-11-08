@@ -6,7 +6,7 @@
         "address": "北海道函館市美原",
         "business-hours": "10時～18時",
         "regular-holiday": "月曜日",
-        "image_url": "http://localhost:3000/images/sweets/dorayaki.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop01.png",
         "coordinates": {
             "lat": 43.06,
             "lng": 141.34
@@ -19,12 +19,12 @@
         "address": "北海道函館市本町",
         "business-hours": "10時～19時",
         "regular-holiday": "火曜日",
-        "image_url": "http://localhost:3000/images/sweets/cake.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop02.png",
         "coordinates": {
             "lat": 41.79,
             "lng": 140.75
         }
-        
+
     },
     {
         "shopId": "shop03",
@@ -33,7 +33,7 @@
         "address": "北海道函館市五稜郭町",
         "business-hours": "11時～18時",
         "regular-holiday": "水曜日",
-        "image_url": "http://localhost:3000/images/sweets/chocolate.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop03.png",
         "coordinates": {
             "lat": 41.80,
             "lng": 140.76
@@ -46,7 +46,7 @@
         "address": "北海道函館市湯川町",
         "business-hours": "9時～17時",
         "regular-holiday": "木曜日",
-        "image_url": "http://localhost:3000/images/sweets/donut.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop04.png",
         "coordinates": {
             "lat": 41.78,
             "lng": 140.79
@@ -59,7 +59,7 @@
         "address": "北海道函館市昭和",
         "business-hours": "10時～18時",
         "regular-holiday": "月曜日",
-        "image_url": "http://localhost:3000/images/sweets/pudding.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop05.png",
         "coordinates": {
             "lat": 41.81,
             "lng": 140.73
@@ -72,7 +72,7 @@
         "address": "北海道函館市港町",
         "business-hours": "11時～20時",
         "regular-holiday": "火曜日",
-        "image_url": "http://localhost:3000/images/sweets/icecream.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop06.png",
         "coordinates": {
             "lat": 41.81,
             "lng": 140.72
@@ -85,7 +85,7 @@
         "address": "北海道函館市松風町",
         "business-hours": "9時～17時",
         "regular-holiday": "水曜日",
-        "image_url": "http://localhost:3000/images/sweets/daifuku.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop07.png",
         "coordinates": {
             "lat": 41.77,
             "lng": 140.73
@@ -98,7 +98,7 @@
         "address": "北海道函館市石川町",
         "business-hours": "10時～18時",
         "regular-holiday": "木曜日",
-        "image_url": "http://localhost:3000/images/sweets/apple-pie.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop08.png",
         "coordinates": {
             "lat": 41.83,
             "lng": 140.74
@@ -111,7 +111,7 @@
         "address": "北海道函館市中道",
         "business-hours": "10時～19時",
         "regular-holiday": "金曜日",
-        "image_url": "http://localhost:3000/images/sweets/macaron.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop09.png",
         "coordinates": {
             "lat": 41.80,
             "lng": 140.74
@@ -124,7 +124,7 @@
         "address": "北海道函館市美原",
         "business-hours": "9時～18時",
         "regular-holiday": "日曜日",
-        "image_url": "http://localhost:3000/images/sweets/pancake.jpg",
+        "image_url": "http://localhost:3000/images/stores/shop10.png",
         "coordinates": {
             "lat": 41.82,
             "lng": 140.75
