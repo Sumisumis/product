@@ -1,30 +1,36 @@
+
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import ShopCard from "../components/ShopCard";
+import SweetCard from "../components/SweetCard";
 import { styles } from "../styles/styles";
 
-/**
- * 🔥 バックエンドのデータ
- */
-type ApiShop = {
+// スイーツのデータ
+type Sweet = {
   id: string;
   shopId: string;
   sweetName: string;
-  shopName: string;
   category: string;
   price: number;
   description: string;
-  tags: string[];
   image_url: string;
 };
 
-/**
- * 🔥 ShopCard用に変換した型
- */
+// 店舗のデータ
+type ApiStore = {
+  shopId: string;
+  shopName: string;
+  description: string;
+  address: string;
+  "business-hours": string;
+  "regular-holiday": string;
+  image_url: string;
+};
+
+// ShopCardに渡すデータ
 type Shop = {
-  storeId: string;
   name: string;
   address: string;
   time: string;
@@ -32,77 +38,73 @@ type Shop = {
   price: string;
   holiday: string;
   image: string;
-  sweets: string[];
 };
 
 export default function SearchResultPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const [query, setQuery] = useState(
-    searchParams.get("keyword") || ""
-  );
+  const keyword = searchParams.get("keyword") || "";
+  const searchType = searchParams.get("type") || "sweets";
 
-  const [shops, setShops] = useState<ApiShop[]>([]);
+  const [sweets, setSweets] = useState<Sweet[]>([]);
+  const [stores, setStores] = useState<ApiStore[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  const keyword =
-    searchParams.get("keyword")?.trim().toLowerCase() || "";
-  const searchType =
-  searchParams.get("type") || "sweets";
-  /**
-   * 🔥 バックエンド取得
-   */
+  // 検索タイプに応じてAPIを切り替える
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+
       try {
-        const res = await fetch("http://localhost:3000/api/search");
+        const endpoint =
+          searchType === "shops"
+            ? "stores"
+            : "sweets";
+
+        const url =
+          `http://localhost:3000/api/${endpoint}?q=${encodeURIComponent(keyword)}`;
+
+        const res = await fetch(url);
+
+        if (!res.ok) {
+          throw new Error("データの取得に失敗しました");
+        }
+
         const data = await res.json();
-        setShops(data);
+
+        if (searchType === "shops") {
+          setStores(data);
+          setSweets([]);
+        } else {
+          setSweets(data);
+          setStores([]);
+        }
       } catch (error) {
-        console.error("取得失敗:", error);
+        console.error("検索結果の取得失敗:", error);
+        setSweets([]);
+        setStores([]);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
-  }, []);
+  }, [keyword, searchType]);
 
-  /**
-   * 🔥 ShopCard用に変換
-   */
-  const mappedShops: Shop[] = shops.map((item) => ({
-    storeId: item.id,
-    name: item.shopName,
-    address: "",
-    time: "",
-    category: item.category,
-    price: String(item.price),
-    holiday: "",
-    image: item.image_url,
-    sweets: [item.sweetName],
+  // 店舗データをShopCard用に変換
+  const mappedStores: Shop[] = stores.map((store) => ({
+    name: store.shopName,
+    address: store.address,
+    time: store["business-hours"],
+    category: store.description,
+    price: "価格情報なし",
+    holiday: store["regular-holiday"],
+    image: store.image_url,
   }));
 
-  /**
-   * 🔥 フロント検索フィルター
-   */
-  const filteredShops = mappedShops.filter((shop) => {
-  if (searchType === "shops") {
-    return shop.name
-      .toLowerCase()
-      .includes(keyword);
-  }
-
-  return shop.sweets.some((sweet) =>
-    sweet.toLowerCase().includes(keyword)
-  );
-});
-
-  const handleSearch = () => {
-    navigate(
-    `/search-result?keyword=${encodeURIComponent(query)}&type=${searchType}`
-  );
-  };
+  const resultCount =
+    searchType === "shops" ? stores.length : sweets.length;
 
   return (
     <div style={styles.body}>
@@ -112,47 +114,49 @@ export default function SearchResultPage() {
       />
 
       <main style={styles.main}>
-        {/* 🔍 search */}
-        <div style={styles.searchBox}>
-          <input
-            type="text"
-            placeholder="検索..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") handleSearch();
-            }}
-            style={styles.searchInput}
-          />
+        <div style={styles.searchInfo}>
+          <h2 style={styles.searchKeyword}>
+            「{keyword}」
+          </h2>
 
-          <button
-           type="button"
-           onClick={handleSearch}
-           style={{
-                marginLeft: "10px",
-                padding: "10px 14px",
-               cursor: "pointer",
-           }}
-            >
-              <span style={{ fontSize: "24px" }}>
-             🔍
-             </span>
-          </button>
+          <p style={styles.searchCount}>
+            全 {resultCount} 件
+          </p>
         </div>
 
-        {/* 🏪 results */}
-        {filteredShops.map((shop) => (
-          <Link
-            key={shop.storeId}
-            to={`/stores/${shop.storeId}`}
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <ShopCard shop={shop} />
-          </Link>
-        ))}
+        {loading ? (
+          <p>検索中...</p>
+        ) : resultCount === 0 ? (
+          <p>検索結果がありません。</p>
+        ) : searchType === "shops" ? (
+          // 店舗検索結果
+          mappedStores.map((shop, index) => (
+            <Link
+              key={stores[index].shopId}
+              to={`/stores/${stores[index].shopId}`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <ShopCard shop={shop} />
+            </Link>
+          ))
+        ) : (
+          // スイーツ検索結果
+          sweets.map((sweet) => (
+            <Link
+              key={sweet.id}
+              to={`/stores/${sweet.shopId}`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <SweetCard sweet={sweet} />
+            </Link>
+          ))
+        )}
       </main>
     </div>
   );

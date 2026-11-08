@@ -123,11 +123,11 @@ const Search = () => {
       : filteredShops.length;
 
   const handleSearch = () => {
-     navigate(
-    `/search-result?keyword=${encodeURIComponent(query)}`,
+  navigate(
+    `/search-result?keyword=${encodeURIComponent(query)}&type=${viewMode}`,
     { replace: true }
-    );
-  };
+  );
+};
 
   return (
     <section className="search-layout">
