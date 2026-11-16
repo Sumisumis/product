@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
 import { NavLink, Navigate, Outlet, Route, Routes } from "react-router-dom";
 import Detail from "./Detail";
 import Home from "./Home";
@@ -8,10 +10,28 @@ import HowToUse from "./pages/HowToUse";
 import "./App.css";
 
 function AppShell() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <main className="screen-shell">
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        closeSidebar={() => setSidebarOpen(false)}
+      />
+
       <header className="screen-header">
-        <span className="header-title">ヘッダー</span>
+        <button
+          type="button"
+          className="header-menu-button"
+          aria-label="メニューを開く"
+          aria-expanded={sidebarOpen}
+          onClick={() => setSidebarOpen(true)}
+        >
+          ☰
+        </button>
+
+        <span className="header-title">ちょこはこ</span>
+        <span className="header-spacer" aria-hidden="true" />
       </header>
 
       <section className="screen-content">
