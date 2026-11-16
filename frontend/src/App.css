@@ -808,6 +808,199 @@ button:disabled { cursor: default; opacity: .4; }
   width: 30px;
 }
 
+/* --- 追加：カルーセル・情報カード・メニュー用のスタイル --- */
+.detail-hero {
+  height: clamp(220px, 35vw, 380px);
+  background-color: #f1e9e0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.detail-hero-viewport {
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #f1e9e0;
+}
+
+.detail-hero-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.detail-hero-slide {
+  flex-shrink: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1e9e0;
+}
+
+.detail-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-hero-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background-color: #f1e9e0;
+  color: #a89585;
+  font-size: 13px;
+}
+
+.detail-hero-arrow {
+  width: 36px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f8f8f8;
+  color: var(--choco-dark);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+.detail-hero-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.detail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.65);
+  border: none;
+  padding: 0;
+}
+
+.detail-dot.is-active {
+  background-color: var(--choco-tan);
+  transform: scale(1.15);
+}
+
+.detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 12px;
+}
+
+.detail-card {
+  background-color: var(--choco-card);
+  border-radius: 16px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-card);
+}
+
+.detail-info-row {
+  display: flex;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.detail-info-row:last-child {
+  border-bottom: none;
+}
+
+.detail-info-icon {
+  width: 20px;
+  display: grid;
+  place-items: center;
+  color: #96725c;
+  marginTop: 2px;
+}
+
+.detail-info-body {
+  flex: 1;
+}
+
+.detail-info-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--choco-text-muted);
+  marginBottom: 2px;
+}
+
+.detail-info-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--choco-text);
+  lineHeight: 1.8;
+}
+
+.detail-section-title {
+  margin: 0 0 10px;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #3c2d24;
+  border-left: 4px solid var(--choco-tan-light);
+  padding-left: 8px;
+}
+
+.detail-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 10px;
+}
+
+.detail-menu-item {
+  margin: 0;
+}
+
+.detail-menu-thumb {
+  height: 86px;
+  border-radius: 10px;
+  background-color: #efefef;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.detail-menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-menu-name {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--choco-text);
+}
+
+.detail-menu-price {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--choco-price);
+}
+
 .howto-page {
   width: 100%;
   min-height: 100%;

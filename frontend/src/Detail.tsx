@@ -1,81 +1,48 @@
 import { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
+  FiCalendar,
   FiChevronLeft,
   FiChevronRight,
   FiClock,
   FiInfo,
   FiMapPin,
 } from "react-icons/fi";
-import { LuCake } from "react-icons/lu";
-import { TbCurrencyYen } from "react-icons/tb";
 
-/** 画像どおりのクリーンなサンセリフ（日本語UI向け） */
-const FONT =
-  '"Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Yu Gothic", "Meiryo", "Segoe UI", sans-serif';
+// jsonファイルを直接読み込んでます
+import storesData from "../../backend/src/mocks/stores.json";
+import sweetsData from "../../backend/src/mocks/sweets.json";
 
-const shopInfo = [
-  {
-    icon: <FiMapPin size={16} />,
-    label: "住所",
-    value: "北海道函館市○○町1-2-3",
-  },
-  {
-    icon: <FiClock size={16} />,
-    label: "営業時間",
-    value: "10:00 ～ 20:00",
-  },
-  {
-    icon: <LuCake size={16} />,
-    label: "ジャンル",
-    value: "カフェ・スイーツ",
-  },
-  {
-    icon: <TbCurrencyYen size={16} />,
-    label: "価格帯",
-    value: "¥1,000〜¥2,000",
-  },
-  {
-    icon: <FiInfo size={16} />,
-    label: "お店情報",
-    value:
-      "函館の新鮮な素材を活かしたこだわりのスイーツを提供しています。落ち着いた店内でゆっくりとお過ごしください。",
-  },
-];
+export interface Store {
+  shopId: string;
+  shopName: string;
+  description: string;
+  address: string;
+  "business-hours": string;
+  "regular-holiday": string;
+  image_url: string;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+}
 
-const menuItems = [
-  { name: "チョコケーキ", price: "¥450" },
-  { name: "抹茶パフェ", price: "¥600" },
-  { name: "函館プリン", price: "¥350" },
-];
+export interface SweetItem {
+  id: string;
+  shopId: string;
+  sweetName: string;
+  category: string;
+  price: number;
+  description: string;
+  tags: string[];
+  image_url: string;
+}
 
-const unsplash = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
-
-/** 店舗写真（API連携時はここを差し替え） */
-const STORE_PHOTOS = [
-  {
-    id: "exterior",
-    src: unsplash("photo-1554118811-1e0d58224f24"),
-    alt: "お店の外観",
-  },
-  {
-    id: "interior",
-    src: unsplash("photo-1556910103-1c02745aae4d"),
-    alt: "店内",
-  },
-  {
-    id: "sweets",
-    src: unsplash("photo-1565958011703-44f9829ba187"),
-    alt: "スイーツ",
-  },
-];
-
-type StorePhoto = (typeof STORE_PHOTOS)[number];
-
-const HERO_HEIGHT = "clamp(220px, 35vw, 380px)";
-/** 店舗詳細欄（content）の上余白と揃える */
-const SECTION_GAP = 20;
+interface StorePhoto {
+  id: string;
+  src: string;
+  alt: string;
+}
 
 function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -94,9 +61,9 @@ function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
 
   if (count === 0) {
     return (
-      <section style={styles.hero}>
-        <div style={styles.heroViewport}>
-          <div style={styles.heroPlaceholder}>写真がありません</div>
+      <section className="detail-hero">
+        <div className="detail-hero-viewport">
+          <div className="detail-hero-placeholder">写真がありません</div>
         </div>
       </section>
     );
@@ -106,23 +73,23 @@ function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
 
   return (
     <section
-      style={styles.hero}
+      className="detail-hero"
       aria-roledescription="carousel"
       aria-label="店舗写真"
     >
       <button
         type="button"
-        style={styles.heroArrow}
+        className="detail-hero-arrow"
         aria-label="前の写真"
         onClick={goPrev}
       >
         <FiChevronLeft size={18} />
       </button>
 
-      <div style={styles.heroViewport}>
+      <div className="detail-hero-viewport">
         <div
+          className="detail-hero-track"
           style={{
-            ...styles.heroTrack,
             width: `${count * 100}%`,
             transform: `translateX(-${slideOffsetPercent}%)`,
           }}
@@ -132,17 +99,14 @@ function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
           ))}
         </div>
 
-        <div style={styles.heroDots}>
+        <div className="detail-hero-dots">
           {photos.map((photo, index) => (
             <button
               key={photo.id}
               type="button"
               aria-label={`${index + 1}枚目の写真`}
               aria-current={index === activeIndex ? "true" : undefined}
-              style={{
-                ...styles.dot,
-                ...(index === activeIndex ? styles.dotActive : {}),
-              }}
+              className={`detail-dot ${index === activeIndex ? "is-active" : ""}`}
               onClick={() => goTo(index)}
             />
           ))}
@@ -151,7 +115,7 @@ function HeroCarousel({ photos }: { photos: StorePhoto[] }) {
 
       <button
         type="button"
-        style={styles.heroArrow}
+        className="detail-hero-arrow"
         aria-label="次の写真"
         onClick={goNext}
       >
@@ -166,18 +130,16 @@ function HeroSlide({ photo, count }: { photo: StorePhoto; count: number }) {
 
   return (
     <div
-      style={{
-        ...styles.heroSlide,
-        width: `${100 / count}%`,
-      }}
+      className="detail-hero-slide"
+      style={{ width: `${100 / count}%` }}
     >
       {failed ? (
-        <div style={styles.heroPlaceholder}>{photo.alt}</div>
+        <div className="detail-hero-placeholder">{photo.alt}</div>
       ) : (
         <img
           src={photo.src}
           alt={photo.alt}
-          style={styles.heroImage}
+          className="detail-hero-image"
           loading="lazy"
           decoding="async"
           onError={() => setFailed(true)}
@@ -188,34 +150,114 @@ function HeroSlide({ photo, count }: { photo: StorePhoto; count: number }) {
 }
 
 const Detail = () => {
+  const params = useParams<Record<string, string | undefined>>();
+  const targetId = params.shopId || Object.values(params)[0] || "shop01";
+
+  // デバッグ用
+  //console.log("URLから取得したターゲットID:", targetId);
+
+  //stores.json から一致する店舗を検索
+  const currentStore = (storesData as Store[]).find(
+    (s) => s.shopId === targetId
+  );
+
+  // 該当する店舗が見つからない場合のエラー表示
+  if (!currentStore) {
+    return (
+      <div className="detail-layout">
+        <Link to="/search" className="back-link">
+          <FiChevronLeft />
+          スイーツを探す
+        </Link>
+        <div className="empty-state">
+          <h2>店舗が見つかりませんでした</h2>
+          <p>指定された店舗（ID: {targetId}）の情報は存在しません。</p>
+        </div>
+      </div>
+    );
+  }
+
+  //sweets.json から該当店舗のメニューだけを抽出
+  const storeSweets = (sweetsData as SweetItem[]).filter(
+    (sweet) => sweet.shopId === currentStore.shopId
+  );
+
+  const storePhotos: StorePhoto[] = [
+    {
+      id: "main",
+      src: currentStore.image_url,
+      alt: currentStore.shopName,
+    },
+  ];
+
+  const shopInfo = [
+    {
+      icon: <FiMapPin size={16} />,
+      label: "住所",
+      value: currentStore.address,
+    },
+    {
+      icon: <FiClock size={16} />,
+      label: "営業時間",
+      value: currentStore["business-hours"],
+    },
+    {
+      icon: <FiCalendar size={16} />,
+      label: "定休日",
+      value: currentStore["regular-holiday"],
+    },
+    {
+      icon: <FiInfo size={16} />,
+      label: "お店情報",
+      value: currentStore.description,
+    },
+  ];
 
   return (
     <div className="detail-layout">
-      <Link to="/search" className="back-link"><FiChevronLeft />スイーツを探す</Link>
-      <div className="detail-intro"><p className="eyebrow">SHOP INFORMATION</p><h1>店舗詳細</h1><p>掲載内容はサンプルです。</p></div>
-      <HeroCarousel photos={STORE_PHOTOS} />
+      <Link to="/search" className="back-link">
+        <FiChevronLeft />
+        スイーツを探す
+      </Link>
+      <div className="detail-intro">
+        <p className="eyebrow">SHOP INFORMATION</p>
+        <h1>{currentStore.shopName}</h1>
+      </div>
 
-      <div style={styles.content}>
-        <section style={styles.card}>
+      <HeroCarousel photos={storePhotos} />
+
+      <div className="detail-content">
+        <section className="detail-card">
           {shopInfo.map((item) => (
-            <div key={item.label} style={styles.infoRow}>
-              <div style={styles.infoIcon}>{item.icon}</div>
-              <div style={styles.infoBody}>
-                <div style={styles.infoLabel}>{item.label}</div>
-                <div style={styles.infoValue}>{item.value}</div>
+            <div key={item.label} className="detail-info-row">
+              <div className="detail-info-icon">{item.icon}</div>
+              <div className="detail-info-body">
+                <div className="detail-info-label">{item.label}</div>
+                <div className="detail-info-value">{item.value}</div>
               </div>
             </div>
           ))}
         </section>
 
-        <section style={styles.card}>
-          <h2 style={styles.sectionTitle}>メニュー</h2>
-          <div style={styles.menuGrid}>
-            {menuItems.map((item) => (
-              <article key={item.name} style={styles.menuItem}>
-                <div className="detail-menu-placeholder"><LuCake size={24} /><span>写真準備中</span></div>
-                <h3 style={styles.menuName}>{item.name}</h3>
-                <p style={styles.menuPrice}>{item.price}</p>
+        <section className="detail-card">
+          <h2 className="detail-section-title">メニュー</h2>
+          <div className="detail-menu-grid">
+            {storeSweets.map((sweet) => (
+              <article key={sweet.id} className="detail-menu-item">
+                <div className="detail-menu-thumb">
+                  <img
+                    src={sweet.image_url}
+                    alt={sweet.sweetName}
+                    className="detail-menu-image"
+                    onError={(e) => {
+                      (e.target as HTMLElement).style.display = "none";
+                    }}
+                  />
+                </div>
+                <h3 className="detail-menu-name">{sweet.sweetName}</h3>
+                <p className="detail-menu-price">
+                  ¥{sweet.price.toLocaleString()}
+                </p>
               </article>
             ))}
           </div>
@@ -223,179 +265,6 @@ const Detail = () => {
       </div>
     </div>
   );
-};
-
-const styles = {
-  hero: {
-    height: HERO_HEIGHT,
-    marginTop: 0,
-    backgroundColor: "#f1e9e0",
-    display: "flex",
-    alignItems: "center",
-    gap: 8,
-    padding: "0",
-    borderRadius: 18,
-    overflow: "hidden",
-    position: "relative" as const,
-    boxSizing: "border-box" as const,
-  },
-  heroViewport: {
-    flex: 1,
-    height: "100%",
-    overflow: "hidden",
-    position: "relative" as const,
-    backgroundColor: "#f1e9e0",
-  },
-  heroTrack: {
-    display: "flex",
-    height: "100%",
-    transition: "transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-    willChange: "transform",
-  },
-  heroSlide: {
-    flexShrink: 0,
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f1e9e0",
-  },
-  heroImage: {
-    maxWidth: "100%",
-    maxHeight: "100%",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover" as const,
-    display: "block",
-  },
-  heroPlaceholder: {
-    width: "100%",
-    height: "100%",
-    display: "grid",
-    placeItems: "center",
-    backgroundColor: "#f1e9e0",
-    color: "#a89585",
-    fontSize: 13,
-    fontFamily: FONT,
-  },
-  heroArrow: {
-    width: 36,
-    height: 44,
-    borderRadius: "50%",
-    border: "none",
-    backgroundColor: "#f8f8f8",
-    color: "#725244",
-    display: "grid",
-    placeItems: "center",
-    cursor: "pointer",
-    flexShrink: 0,
-    zIndex: 2,
-    boxShadow: "0 1px 4px rgba(0, 0, 0, 0.12)",
-  },
-  heroDots: {
-    position: "absolute" as const,
-    left: 0,
-    right: 0,
-    bottom: 10,
-    display: "flex",
-    justifyContent: "center",
-    gap: 6,
-    zIndex: 2,
-  },
-  dot: {
-    width: 7,
-    height: 7,
-    borderRadius: "50%",
-    backgroundColor: "rgba(255, 255, 255, 0.65)",
-    border: "none",
-    padding: 0,
-    cursor: "pointer",
-  },
-  dotActive: {
-    backgroundColor: "#c7a58b",
-    transform: "scale(1.15)",
-  },
-  content: {
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: SECTION_GAP,
-    padding: `0 0 12px`,
-  },
-  card: {
-    backgroundColor: "#fff",
-    borderRadius: 16,
-    padding: 22,
-    border: "1px solid var(--line)",
-    boxShadow: "var(--shadow-card)",
-  },
-  infoRow: {
-    display: "flex",
-    gap: 10,
-    padding: "13px 0",
-    borderBottom: "1px solid #f2f2f2",
-  },
-  infoIcon: {
-    width: 20,
-    display: "grid",
-    placeItems: "center",
-    color: "#96725c",
-    marginTop: 2,
-  },
-  infoBody: { flex: 1 },
-  infoLabel: {
-    fontSize: 12,
-    fontWeight: 500,
-    fontFamily: FONT,
-    color: "#796d66",
-    marginBottom: 2,
-  },
-  infoValue: {
-    fontSize: 15,
-    fontWeight: 500,
-    fontFamily: FONT,
-    color: "#332725",
-    lineHeight: 1.8,
-  },
-  sectionTitle: {
-    margin: "0 0 10px",
-    fontSize: 17,
-    fontWeight: 700,
-    lineHeight: 1.2,
-    color: "#3c2d24",
-    borderLeft: "4px solid #d1b298",
-    paddingLeft: 8,
-    fontFamily: FONT,
-  },
-  menuGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(115px, 1fr))",
-    gap: 10,
-  },
-  menuItem: { margin: 0 },
-  menuImage: {
-    height: 86,
-    borderRadius: 10,
-    backgroundColor: "#efefef",
-    display: "grid",
-    placeItems: "center",
-    color: "#c5c5c5",
-    fontSize: 12,
-    marginBottom: 8,
-  },
-  menuName: {
-    margin: "0 0 2px",
-    fontSize: 15,
-    fontWeight: 600,
-    fontFamily: FONT,
-    color: "#362822",
-  },
-  menuPrice: {
-    margin: 0,
-    fontSize: 13,
-    fontWeight: 500,
-    fontFamily: FONT,
-    color: "#725244",
-  },
 };
 
 export default Detail;
