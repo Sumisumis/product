@@ -51,37 +51,32 @@ export default function SearchResultPage() {
   const [stores, setStores] = useState<ApiStore[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // 検索タイプに応じてAPIを切り替える
+  
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
 
       try {
-        const endpoint =
-          searchType === "shops"
-            ? "stores"
-            : "sweets";
-
         const url =
-          `http://localhost:3000/api/${endpoint}?q=${encodeURIComponent(keyword)}`;
+          `http://localhost:3000/api/search?q=${encodeURIComponent(keyword)}`;
 
         const res = await fetch(url);
 
         if (!res.ok) {
-          throw new Error("データの取得に失敗しました");
+          throw new Error("検索結果の取得に失敗しました");
         }
 
         const data = await res.json();
 
         if (searchType === "shops") {
-          setStores(data);
+          setStores(data.stores);
           setSweets([]);
         } else {
-          setSweets(data);
+          setSweets(data.sweets);
           setStores([]);
         }
       } catch (error) {
-        console.error("検索結果の取得失敗:", error);
+        console.error("検索結果の取得に失敗しました:", error);
         setSweets([]);
         setStores([]);
       } finally {
